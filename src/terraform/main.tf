@@ -69,5 +69,6 @@ resource "azurerm_key_vault" "key_vault" {
     storage_permissions = [
       "Get",
     ]
+
   }
 }
