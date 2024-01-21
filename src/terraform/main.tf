@@ -24,27 +24,12 @@ resource "azurerm_virtual_network" "vnet" {
   location            = var.location
   address_space       = ["10.0.0.0/16"]  # Customize the address space as needed
 }
-resource "azurerm_subnet" "subnet" {
-  name                 = "my-subnet"
-  resource_group_name  = var.resource_group_name
-  virtual_network_name = var.vnet_name
-  address_prefixes     = ["10.0.0.0/24"]
 
-  delegation {
-    name = "diskspool"
+resource "azurerm_storage_account" "storageaccount" {
+  name                     = "bhanustorage19"
+  resource_group_name      = var.resource_group_name
+  location                 = var.location
+  account_tier             = "Standard"
+  account_replication_type = "LRS"
 
-    service_delegation {
-      actions = ["Microsoft.Network/virtualNetworks/read"]
-      name    = "Microsoft.StoragePool/diskPools"
-    }
-  }
-}
-
-resource "azurerm_disk_pool" "example" {
-  name                = "diskpool"
-  resource_group_name = var.resource_group_name
-  location            = var.location
-  sku_name            = "Basic_B1"
-  subnet_id           = var.subnet_name
-  zones               = ["1"]
 }
