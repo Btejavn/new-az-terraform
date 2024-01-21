@@ -16,6 +16,9 @@ provider "azurerm" {
 resource "azurerm_resource_group" "rg" {
   name     = var.resource_group_name
   location = var.location
+  tags = {
+    environment = "Production"
+  }
 }
 
 resource "azurerm_virtual_network" "vnet" {
@@ -23,6 +26,9 @@ resource "azurerm_virtual_network" "vnet" {
   resource_group_name = var.resource_group_name
   location            = var.location
   address_space       = ["10.0.0.0/16"]  # Customize the address space as needed
+  tags = {
+    environment = "Production"
+  }
 }
 
 resource "azurerm_storage_account" "storageaccount" {
@@ -32,4 +38,7 @@ resource "azurerm_storage_account" "storageaccount" {
   account_tier             = "Standard"
   account_replication_type = "LRS"
 
+tags = {
+    environment = "Production"
+  }
 }
