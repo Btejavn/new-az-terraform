@@ -135,7 +135,7 @@ data "azurerm_client_config" "current" {}
 
 
 resource "azurerm_key_vault" "keyvault" {
-  name                        = "my-keyvault"
+  name                        = "btkcmafwfw"
   location                    = var.location
   resource_group_name         = var.resource_group_name
   enabled_for_disk_encryption = true
