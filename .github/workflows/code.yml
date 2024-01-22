@@ -46,25 +46,31 @@ jobs:
       run: terraform plan 
       working-directory: ${{ env.ROOT_PATH }}
 
-  terraform_deploy:
-    name: 'Terraform Deploy'
-    needs: [terraform_plan]
-    runs-on: ubuntu-latest
+  #terraform_deploy:
+    #name: 'Terraform Deploy'
+    #needs: [terraform_plan]
+    #runs-on: ubuntu-latest
     
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+    #steps:
+    #- name: Checkout
+      #uses: actions/checkout@v2
 
-    - name: Setup Terraform
-      uses: hashicorp/setup-terraform@v1
-      with:
-        terraform_version: 0.14.0 # Specify a version suitable for your configuration
-        cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
+    #- name: Setup Terraform
+      #uses: hashicorp/setup-terraform@v1
+      #with:cd ..
+        #terraform_version: 0.14.0 # Specify a version suitable for your configuration
+        #cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
   
-    - name: Terraform Init
-      run: terraform init
-      working-directory: ${{ env.ROOT_PATH }}
+    #- name: Terraform Init
+      #run: terraform init
+      #working-directory: ${{ env.ROOT_PATH }}
 
-    - name: Terraform Apply
-      run: terraform apply -auto-approve
+    #- name: Terraform Apply
+      #run: terraform apply -auto-approve
+      #working-directory: ${{ env.ROOT_PATH }}
+
+    - name: Terraform output
+      run: terraform output
       working-directory: ${{ env.ROOT_PATH }}
+    
+    
