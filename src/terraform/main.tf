@@ -122,6 +122,7 @@ resource "azurerm_linux_virtual_machine" "example" {
 }
 
 provider "azurerm" {
+  alias = "another"
   features {
     key_vault {
       purge_soft_delete_on_destroy    = true
